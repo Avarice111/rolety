@@ -1,7 +1,6 @@
-package com.rolety.repository;
+package com.rolety.roletycrud.repository;
 
-import com.rolety.domain.Rolety;
-
+import com.rolety.roletycrud.domain.Rolety;
 import java.util.List;
 
 public interface RoletyRepository {

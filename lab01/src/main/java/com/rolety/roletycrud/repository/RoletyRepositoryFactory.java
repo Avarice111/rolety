@@ -1,4 +1,4 @@
-package com.rolety.repository;
+package com.rolety.roletycrud.repository;
 
 public class RoletyRepositoryFactory {
 
