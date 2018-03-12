@@ -18,12 +18,12 @@ public class RoletyRepositoryTest
     @Test
     public void initDatabase() {
     roletyRepository = RoletyRepositoryFactory.getInstance();
-    Rolety rolety1 = new Rolety();
-    rolety1.setId(1);
-    rolety1.setName("mango");
-    rolety1.setPrice(100);
-    rolety1.setSize(21);
-    roletyRepository.addRolety(rolety1);
+    Rolety rolety = new Rolety();
+    rolety.setId(1);
+    rolety.setName("mango");
+    rolety.setPrice(100);
+    rolety.setSize(21);
+    roletyRepository.addRolety(rolety);
     }
 
     @Test
@@ -56,12 +56,14 @@ public class RoletyRepositoryTest
     @Test
     public void updateRolety () {
         Rolety rolety = new Rolety();
+        Rolety roletyBefore = new Rolety();
+        roletyBefore = roletyRepository.getById(roletyBefore.getId());
         rolety.setId(2);
         rolety.setName("mango_super_opcja");
         rolety.setPrice(120);
         rolety.setSize(22);
         int idToUpdate = 2;
         roletyRepository.updateRolety(idToUpdate, rolety);
-        assertEquals(roletyRepository.getById(idToUpdate).getPrice(), roletyRepository.getById(rolety.getId()).getPrice());
+        assertNotEquals(roletyBefore, roletyRepository.getById(rolety.getId()));
     }
 }

@@ -9,6 +9,7 @@ public class Rolety
     private int size;
     private int price;
 	/**
+	 * @param i
 	 * @return the id
 	 */
 	public int getId() {
