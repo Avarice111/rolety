@@ -17,13 +17,7 @@ public class RoletyRepositoryTest
 
     @Test
     public void initDatabase() {
-    roletyRepository = RoletyRepositoryFactory.getInstance();
-    Rolety rolety = new Rolety();
-    rolety.setId(1);
-    rolety.setName("mango");
-    rolety.setPrice(100);
-    rolety.setSize(21);
-    roletyRepository.addRolety(rolety);
+    assertNotNull(RoletyRepositoryFactory.getInstance());
     }
 
     @Test
