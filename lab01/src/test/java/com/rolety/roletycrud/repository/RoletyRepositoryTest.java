@@ -28,7 +28,7 @@ public class RoletyRepositoryTest
 
     @Test
     public void getById(int id) {
-        assertNotNull(roletyRepository.getById(id));
+        assertNotNull(RoletyRepositoryFactory.getInstance().getById(id));
         
     }
 
