@@ -45,17 +45,9 @@ public class RoletyRepositoryTest
 
     @Test
     public void updateRolety () {
-        Rolety rolety = new Rolety();
-        rolety.setId(2);
-        rolety.setName("mango");
-        rolety.setPrice(23120);
-        rolety.setSize(23123);
-        String roletyBefore = RoletyRepositoryFactory.getInstance().getById(2).getName();
-        rolety.setId(2);
+        Rolety rolety = RoletyRepositoryFactory.getInstance().getById(2);
         rolety.setName("mango_super_opcja");
-        rolety.setPrice(120);
-        rolety.setSize(22);
         roletyRepository.updateRolety(2, rolety);
-        assertNotEquals(roletyBefore, RoletyRepositoryFactory.getInstance().getById(2).getName());
+        assertEquals("mango_super_opcja", RoletyRepositoryFactory.getInstance().getById(2).getName());
     }
 }
