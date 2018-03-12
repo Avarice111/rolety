@@ -9,7 +9,7 @@ public class RoletyTest
     @Test
     public void testRoletyTest()
     {
-        Rolety rolety = new Rolety(1,"Piekne rolety", 160 , 100);
+        Rolety rolety = new Rolety();
         assertNotNull(rolety);
     }
 }
