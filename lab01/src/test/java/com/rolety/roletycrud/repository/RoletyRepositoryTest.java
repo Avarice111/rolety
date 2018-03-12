@@ -39,31 +39,25 @@ public class RoletyRepositoryTest
         rolety.setSize(2);
         rolety.setPrice(10);
         roletyRepository.addRolety(rolety);
-        assertNotNull(roletyRepository.getById(rolety.getId()));
+        assertEquals(RoletyRepositoryFactory.getInstance().getById(1).getName(), "Rolety z Mango");
     }
 
     @Test
     public void deleteRolety(Rolety rolety) {
-        rolety = roletyRepository.getById(1);
+        rolety = RoletyRepositoryFactory.getInstance().getById(1);
         roletyRepository.deleteRolety(rolety);
-        if (roletyRepository.getAll().size() > 0){
-            assertNotNull(roletyRepository.getAll());
-        }else {
-            assertNull(roletyRepository.getById(rolety.getId()));
-        }
+        assertEquals(null, RoletyRepositoryFactory.getInstance().getById(1));
     }
 
     @Test
     public void updateRolety () {
         Rolety rolety = new Rolety();
-        Rolety roletyBefore = new Rolety();
-        roletyBefore = roletyRepository.getById(roletyBefore.getId());
+        String roletyBefore = RoletyRepositoryFactory.getInstance().getById(2).getName();
         rolety.setId(2);
         rolety.setName("mango_super_opcja");
         rolety.setPrice(120);
         rolety.setSize(22);
-        int idToUpdate = 2;
-        roletyRepository.updateRolety(idToUpdate, rolety);
-        assertNotEquals(roletyBefore, roletyRepository.getById(rolety.getId()));
+        roletyRepository.updateRolety(2, rolety);
+        assertNotEquals(roletyBefore, RoletyRepositoryFactory.getInstance().getById(2).getName());
     }
 }
