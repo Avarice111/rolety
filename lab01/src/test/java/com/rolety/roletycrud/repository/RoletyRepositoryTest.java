@@ -21,13 +21,14 @@ public class RoletyRepositoryTest
     }
 
     @Test
-    public void getById(int id) {
+    public void getById() {
         assertNotNull(RoletyRepositoryFactory.getInstance().getById(id));
         
     }
 
     @Test
-    public void addRolety(Rolety rolety) {
+    public void addRolety() {
+        Rolety rolety = new Rolety();
         rolety.setId(1);
         rolety.setName("Rolety z Mango");
         rolety.setSize(2);
@@ -37,8 +38,8 @@ public class RoletyRepositoryTest
     }
 
     @Test
-    public void deleteRolety(Rolety rolety) {
-        rolety = RoletyRepositoryFactory.getInstance().getById(1);
+    public void deleteRolety() {
+        Rolety rolety = RoletyRepositoryFactory.getInstance().getById(1);
         roletyRepository.deleteRolety(rolety);
         assertEquals(null, RoletyRepositoryFactory.getInstance().getById(1));
     }
