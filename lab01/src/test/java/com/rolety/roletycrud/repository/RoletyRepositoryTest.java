@@ -46,6 +46,10 @@ public class RoletyRepositoryTest
     @Test
     public void updateRolety () {
         Rolety rolety = new Rolety();
+        rolety.setId(2);
+        rolety.setName("mango");
+        rolety.setPrice(23120);
+        rolety.setSize(23123);
         String roletyBefore = RoletyRepositoryFactory.getInstance().getById(2).getName();
         rolety.setId(2);
         rolety.setName("mango_super_opcja");
