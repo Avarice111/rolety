@@ -6,9 +6,9 @@ import java.util.List;
 public interface RoletyRepository {
     public List<Rolety> getAll();
     public void initDatabase();
-    public Rolety getById(Long id);
+    public Rolety getById(int id);
     public void addRolety(Rolety rolety);
     public void deleteRolety(Rolety rolety);
-    public void updateRolety(long oldId, Rolety newRolety);
+    public void updateRolety(int oldId, Rolety newRolety);
 
 }

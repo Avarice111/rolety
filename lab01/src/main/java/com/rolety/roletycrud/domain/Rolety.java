@@ -4,20 +4,20 @@ package com.rolety.roletycrud.domain;
 
 public class Rolety
 {
-    private long id;
+    private int id;
     private String name;
     private int size;
     private int price;
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 	/**
 	 * @param l the id to set
 	 */
-	public void setId(long l) {
+	public void setId(int l) {
 		this.id = l;
 	}
 	/**
@@ -57,13 +57,6 @@ public class Rolety
 		this.price = price;
 	}
 
-
-    public Rolety (int id, String name, int size, int price) {
-        this.id = id;
-        this.name = name;
-        this.size = size;
-        this.price = price;   
-    }
 
     
 }

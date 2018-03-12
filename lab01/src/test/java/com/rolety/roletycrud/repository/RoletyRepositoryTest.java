@@ -3,7 +3,8 @@ package com.rolety.roletycrud.repository;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import com.rolety.roletycrud.domain.Rolety;
-import com.rolety.roletycrud.repository.RoletyRepository;;
+import com.rolety.roletycrud.repository.RoletyRepository;
+import com.rolety.roletycrud.repository.RoletyRepositoryFactory;
 
 public class RoletyRepositoryTest
 {
@@ -16,12 +17,18 @@ public class RoletyRepositoryTest
 
     @Test
     public void initDatabase() {
-
+    roletyRepository = RoletyRepositoryFactory.getInstance();
+    Rolety rolety1 = new Rolety();
+    rolety1.setId(1);
+    rolety1.setName("mango");
+    rolety1.setPrice(100);
+    rolety1.setSize(21);
+    roletyRepository.addRolety(rolety1);
     }
 
     @Test
-    public Rolety getById(long id) {
-        return null;
+    public void getById(int id) {
+        assertNotNull(roletyRepository.getById(id));
         
     }
 
@@ -37,7 +44,7 @@ public class RoletyRepositoryTest
 
     @Test
     public void deleteRolety(Rolety rolety) {
-        rolety = roletyRepository.getById((long) 1);
+        rolety = roletyRepository.getById(1);
         roletyRepository.deleteRolety(rolety);
         if (roletyRepository.getAll().size() > 0){
             assertNotNull(roletyRepository.getAll());
@@ -47,7 +54,14 @@ public class RoletyRepositoryTest
     }
 
     @Test
-    public void updateRolety(long oldId, Rolety newRolety) {
-
+    public void updateRolety () {
+        Rolety rolety = new Rolety();
+        rolety.setId(2);
+        rolety.setName("mango_super_opcja");
+        rolety.setPrice(120);
+        rolety.setSize(22);
+        int idToUpdate = 2;
+        roletyRepository.updateRolety(idToUpdate, rolety);
+        assertEquals(roletyRepository.getById(idToUpdate).getPrice(), roletyRepository.getById(rolety.getId()).getPrice());
     }
 }
