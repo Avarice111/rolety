@@ -16,6 +16,6 @@ public interface RoletyRepository {
     public Rolety getById(int id);
     public void addRolety(Rolety rolety);
     public void deleteRolety(Rolety rolety);
-    public void updateRolety(int oldId, Rolety newRolety);
+    public void updateRolety(Rolety rolety);
 
 }

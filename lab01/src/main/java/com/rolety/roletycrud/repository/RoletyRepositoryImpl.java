@@ -14,6 +14,9 @@ public class RoletyRepositoryImpl implements RoletyRepository {
     private Connection connection;
     private PreparedStatement getAllRoletysStmt;
     private PreparedStatement addRoletyStmt;
+    private PreparedStatement deleteRoletyStmt;
+    private PreparedStatement updateRoletyStmt;
+    private PreparedStatement getByIdRoletyStmt;
 
     public RoletyRepositoryImpl(Connection connection) throws SQLException{
         this.connection = connection;
@@ -48,23 +51,6 @@ public class RoletyRepositoryImpl implements RoletyRepository {
 	}
 
 	@Override
-	public Connection getConnection() {
-		return connection;
-	}
-
-	@Override
-	public void setConnection(Connection connection) throws SQLException {
-        this.connection = connection;
-        addRoletyStmt = connection.
-        prepareStatement(
-            "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
-        );
-        getAllRoletysStmt = connection.
-        prepareStatement("SELECT Id, Name, Price, Size FROM Rolety"
-        );
-	}
-
-	@Override
 	public List<Rolety> getAll() {
         List<Rolety> roletys = new LinkedList<>();
         try {
@@ -91,8 +77,24 @@ public class RoletyRepositoryImpl implements RoletyRepository {
 
 	@Override
 	public Rolety getById(int id) {
-		return null;
-	}
+        Rolety rolety = new Rolety();
+        try {
+            getByIdRoletyStmt.setInt(1, id);
+            ResultSet rs = getByIdRoletyStmt.executeQuery();
+
+            while (rs.next()) {
+                Rolety r = new Rolety();
+                r.setId(rs.getInt("Id"));
+                r.setName(rs.getString("Name"));
+                r.setSize(rs.getInt("Size"));
+                r.setPrice(rs.getInt("Price"));
+            } 
+        } catch (SQLException e) {
+                throw new IllegalStateException(e.getMessage() + "\n" + e.getStackTrace().toString());
+            }
+            return rolety;
+    }
+
 
 	@Override
 	public void addRolety(Rolety rolety) {
@@ -109,11 +111,56 @@ public class RoletyRepositoryImpl implements RoletyRepository {
 
 	@Override
 	public void deleteRolety(Rolety rolety) {
+
+        try {
+            deleteRoletyStmt.setInt(1, rolety.getId());
+            deleteRoletyStmt.executeUpdate();
+            
+        }catch(SQLException e) {
+            throw new IllegalStateException(e.getMessage() + "\n" + e.getStackTrace().toString());
+        }
 		
 	}
 
 	@Override
-	public void updateRolety(int oldId, Rolety newRolety) {
-		
+	public void updateRolety(Rolety rolety) {
+        int count = 0;
+        try {
+            updateRoletyStmt.setString(1, rolety.getName());
+            updateRoletyStmt.setInt(2, rolety.getPrice());
+            updateRoletyStmt.setInt(3, rolety.getSize());
+            updateRoletyStmt.setInt(4, rolety.getId());
+            count = updateRoletyStmt.executeUpdate();
+        } catch(SQLException e) {
+            throw new IllegalStateException(e.getMessage() + "\n" + e.getStackTrace().toString());
+        }
+    }
+    @Override
+	public Connection getConnection() {
+		return connection;
+	}
+
+	@Override
+	public void setConnection(Connection connection) throws SQLException {
+        this.connection = connection;
+        addRoletyStmt = connection.
+        prepareStatement(
+            "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
+        );
+        getAllRoletysStmt = connection.
+        prepareStatement("SELECT Id, Name, Price, Size FROM Rolety"
+        );
+        deleteRoletyStmt = connection.
+        prepareStatement(
+            "DELETE FROM Rolety WHERE Id = ?"
+        );
+        updateRoletyStmt = connection.
+        prepareStatement(
+            "UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE Id = ?"
+        );
+        getByIdRoletyStmt = connection.
+        prepareStatement(
+            "SELECT FROM Rolety WHERE Id = ?"
+        );
 	}
 }
