@@ -3,6 +3,7 @@ package com.rolety.repository;
 import com.rolety.domain.Rolety;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,11 +23,11 @@ public class RoletyRepositoryFactory implements IRoletyRepository {
     private PreparedStatement getById;
 
     public RoletyRepositoryFactory(Connection connection) throws SQLException{
-        this.connection = connection;
+        this.connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb");
         if (!isDatabaseReady()) {
             createTables();
         }
-        this.setConnection(connection);
+        this.setConnection(this.connection);
     }
 
     public RoletyRepositoryFactory() throws SQLException {
@@ -57,12 +58,10 @@ public class RoletyRepositoryFactory implements IRoletyRepository {
             "Size integer NOT NULL)");
 	}
 
-    @Override
 	public Connection getConnection() {
 		return connection;
 	}
 
-	@Override
 	public void setConnection(Connection connection) throws SQLException {
         this.connection = connection;
         add = connection.prepareStatement(
@@ -78,7 +77,7 @@ public class RoletyRepositoryFactory implements IRoletyRepository {
             "UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE Id = ?"
         );
         getById = connection.prepareStatement(
-            "SELECT FROM Rolety WHERE Id = ?"
+            "SELECT * FROM Rolety WHERE Id = ?"
         );
 	}
 

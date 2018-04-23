@@ -1,20 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: com.rolety.web.RoletyRepositoryMockTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.544 sec <<< FAILURE!
-checkDeleting(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0.024 sec  <<< FAILURE!
+Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.556 sec <<< FAILURE!
+checkDeleting(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0.027 sec  <<< FAILURE!
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)"
+    "SELECT * FROM Rolety WHERE Id = ? "
 );
--> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
+    "DELETE FROM Rolety WHERE Id = ?"
 );
--> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -49,19 +49,19 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-checkUpdating(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0 sec  <<< FAILURE!
+checkUpdating(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0.001 sec  <<< FAILURE!
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)"
+    "SELECT * FROM Rolety WHERE Id = ? "
 );
--> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
+    "DELETE FROM Rolety WHERE Id = ?"
 );
--> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -96,19 +96,19 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-checkGetById(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0 sec  <<< FAILURE!
+checkGetById(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0.001 sec  <<< FAILURE!
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)"
+    "SELECT * FROM Rolety WHERE Id = ? "
 );
--> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
+    "DELETE FROM Rolety WHERE Id = ?"
 );
--> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -143,19 +143,19 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-getAllTest(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0 sec  <<< FAILURE!
+getAllTest(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0.002 sec  <<< FAILURE!
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)"
+    "SELECT * FROM Rolety WHERE Id = ? "
 );
--> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
+    "DELETE FROM Rolety WHERE Id = ?"
 );
--> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -190,19 +190,19 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 
-checkAdding(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0 sec  <<< FAILURE!
+checkAdding(com.rolety.web.RoletyRepositoryMockTest)  Time elapsed: 0.001 sec  <<< FAILURE!
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)"
+    "SELECT * FROM Rolety WHERE Id = ? "
 );
--> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-> at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
+    "DELETE FROM Rolety WHERE Id = ?"
 );
--> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-> at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

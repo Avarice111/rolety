@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="5" name="com.rolety.web.RoletyRepositoryMockTest" time="0.024" errors="0" skipped="0">
+<testsuite tests="5" failures="5" name="com.rolety.web.RoletyRepositoryMockTest" time="0.032" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_161\jre\bin"/>
@@ -29,7 +29,7 @@
     <property name="os.name" value="Windows 10"/>
     <property name="classworlds.conf" value="C:\Program Files (x86)\Apache\apache-maven-3.5.2\bin\..\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1250"/>
-    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\opencv\build\x64\vc14\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\nodejs\;C:\Program Files (x86)\Apache\apache-maven-3.5.2\bin;C:\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Users\galyn\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\CMake\bin;C:\Users\galyn\AppData\Roaming\npm;."/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\opencv\build\x64\vc14\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\nodejs\;C:\Program Files (x86)\Apache\apache-maven-3.5.2\bin;C:\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Users\galyn\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\CMake\bin;C:\Users\galyn\AppData\Roaming\npm;;."/>
     <property name="maven.conf" value="C:\Program Files (x86)\Apache\apache-maven-3.5.2\bin\../conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
@@ -65,30 +65,30 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkDeleting" time="0.024">
+  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkDeleting" time="0.027">
     <failure message="
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 " type="Argument(s) are different! Wanted">Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -124,30 +124,30 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </failure>
   </testcase>
-  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkUpdating" time="0">
+  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkUpdating" time="0.001">
     <failure message="
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 " type="Argument(s) are different! Wanted">Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -183,53 +183,39 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </failure>
     <system-out>[MockitoHint] RoletyRepositoryMockTest.checkDeleting (see javadoc for MockitoHint):
-[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:47)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 3. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:50)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 4. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
+[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
+[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
 
 </system-out>
   </testcase>
-  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkGetById" time="0">
+  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkGetById" time="0.001">
     <failure message="
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 " type="Argument(s) are different! Wanted">Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -265,53 +251,39 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </failure>
     <system-out>[MockitoHint] RoletyRepositoryMockTest.checkUpdating (see javadoc for MockitoHint):
-[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:47)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 3. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:50)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 4. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
+[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
+[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
 
 </system-out>
   </testcase>
-  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="getAllTest" time="0">
+  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="getAllTest" time="0.002">
     <failure message="
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 " type="Argument(s) are different! Wanted">Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -347,53 +319,39 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </failure>
     <system-out>[MockitoHint] RoletyRepositoryMockTest.checkGetById (see javadoc for MockitoHint):
-[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:47)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 3. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:50)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 4. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
+[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
+[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
 
 </system-out>
   </testcase>
-  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkAdding" time="0">
+  <testcase classname="com.rolety.web.RoletyRepositoryMockTest" name="checkAdding" time="0.001">
     <failure message="
 Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 " type="Argument(s) are different! Wanted">Argument(s) are different! Wanted:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)&quot;
+    &quot;SELECT * FROM Rolety WHERE Id = ? &quot;
 );
--&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+-&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 Actual invocation has different arguments:
 connectionMock.prepareStatement(
-    &quot;INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)&quot;
+    &quot;DELETE FROM Rolety WHERE Id = ?&quot;
 );
--&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
+-&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
 
-	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:55)
+	at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -429,26 +387,12 @@ connectionMock.prepareStatement(
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </failure>
     <system-out>[MockitoHint] RoletyRepositoryMockTest.getAllTest (see javadoc for MockitoHint):
-[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:47)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 3. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:50)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
-[MockitoHint] 4. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:68)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:74)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:77)
-[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:80)
+[MockitoHint] 1. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:49)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
+[MockitoHint] 2. Unused... -&gt; at com.rolety.web.RoletyRepositoryMockTest.setupDatabase(RoletyRepositoryMockTest.java:51)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:73)
+[MockitoHint]  ...args ok? -&gt; at com.rolety.repository.RoletyRepositoryFactory.setConnection(RoletyRepositoryFactory.java:79)
 
 </system-out>
   </testcase>

@@ -44,19 +44,19 @@ public class RoletyRepositoryMockTest {
 
     @Before
     public void setupDatabase() throws SQLException {
-        when(connectionMock.prepareStatement("INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)")).thenReturn(addMock);
+        when(connectionMock.prepareStatement("INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)")).thenReturn(addMock);
         when(connectionMock.prepareStatement("SELECT Id, Name, Price, Size FROM Rolety")).thenReturn(getAllMock);
-        when(connectionMock.prepareStatement("SELECT * FROM Rolety WHERE id = ? ")).thenReturn(getByIdMock);
-        when(connectionMock.prepareStatement("UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE id = ?")).thenReturn(updateMock);
+        when(connectionMock.prepareStatement("SELECT * FROM Rolety WHERE Id = ? ")).thenReturn(getByIdMock);
+        when(connectionMock.prepareStatement("UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE Id = ?")).thenReturn(updateMock);
         when(connectionMock.prepareStatement("DELETE FROM Rolety WHERE id = ?")).thenReturn(deleteMock);
         roletyRepository = new RoletyRepositoryFactory();
         roletyRepository.setConnection(connectionMock);
 
-        verify(connectionMock).prepareStatement("INSERT INTO Rolety (Id, Name, Price, Size) VALUES (?, ?, ?, ?)");
+        verify(connectionMock).prepareStatement("INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)");
         verify(connectionMock).prepareStatement("SELECT Id, Name, Price, Size FROM Rolety");
-        verify(connectionMock).prepareStatement("ELECT * FROM Rolety WHERE id = ? ");
-        verify(connectionMock).prepareStatement("UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE id = ?");
-        verify(connectionMock).prepareStatement("DELETE FROM Rolety WHERE id = ?");
+        verify(connectionMock).prepareStatement("SELECT * FROM Rolety WHERE Id = ? ");
+        verify(connectionMock).prepareStatement("UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE Id = ?");
+        verify(connectionMock).prepareStatement("DELETE * FROM Rolety WHERE Id = ?");
 
     }
 
@@ -65,16 +65,14 @@ public class RoletyRepositoryMockTest {
         when(addMock.executeUpdate()).thenReturn(1);
         Rolety wyborne = new Rolety();
 
-        wyborne.setId(1);
         wyborne.setName("Wyborne");
         wyborne.setPrice(20);
         wyborne.setSize(22);
 
         assertEquals(1, roletyRepository.add(wyborne));
-        verify(addMock, times(1)).setInt(1, 1);
-        verify(addMock, times(1)).setString(2, "Wyborne");
-        verify(addMock, times(1)).setInt(3, 20);
-        verify(addMock, times(1)).setInt(4, 22);
+        verify(addMock, times(1)).setString(1, "Wyborne");
+        verify(addMock, times(1)).setInt(2, 20);
+        verify(addMock, times(1)).setInt(3, 22);
         verify(addMock).executeUpdate();
     }
 
@@ -119,7 +117,6 @@ public class RoletyRepositoryMockTest {
         when(updateMock.executeUpdate()).thenReturn(1);
         Rolety mango = new Rolety();
 
-        mango.setId(2);
         mango.setName("Mango");
         mango.setSize(10);
         mango.setPrice(100);

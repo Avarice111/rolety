@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface IRoletyRepository {
 
-    public Connection getConnection();
 	public void setConnection(Connection connection) throws SQLException;
     public List<Rolety> getAll();
     public Rolety getById(int id) throws SQLException;
