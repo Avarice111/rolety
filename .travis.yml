@@ -1,3 +1,4 @@
 language: java
 script:
- - cd lab01; mvn test
+- cd RoletyTAU; bash scripts/server.sh
+- cd RoletyTAU; mvn test
