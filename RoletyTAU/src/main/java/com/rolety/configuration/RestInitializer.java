@@ -15,8 +15,8 @@ public class RestInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext ServletContext) throws ServletException {
         WebApplicationContext context = getContext();
-        servletContext.addListener(new ContextLoaderListener(context));
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
+        ServletContext.addListener(new ContextLoaderListener(context));
+        ServletRegistration.Dynamic dispatcher = ServletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/*");
     }

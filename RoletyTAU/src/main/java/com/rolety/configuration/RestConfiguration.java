@@ -12,11 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 @ComponentScan({"com.rolety.roletycrud"})
-public class RestConfiguration extends WebMvcConfigureAdapter
+public class RestConfiguration extends WebMvcConfigurerAdapter
 {
     @Override
-    public void configureMessageConferters(List<HttpMessageConferter<?>> messageConverters)
+    public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters)
     {
-        super.configureMessageConferters(messageConverters);
+        super.configureMessageConverters(messageConverters);
     }
 }

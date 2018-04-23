@@ -1,10 +1,6 @@
 package com.rolety.web;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertNotNull;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-import com.rolety.domain;
+import com.rolety.domain.Rolety;
 import com.rolety.repository.IRoletyRepository;
 import com.rolety.repository.RoletyRepositoryFactory;
 import org.junit.runner.RunWith;
@@ -70,13 +66,13 @@ public class RoletyRepositoryMockTest {
         Rolety wyborne = new Rolety();
 
         wyborne.setId(1);
-        wybore.setName("Wyborne");
+        wyborne.setName("Wyborne");
         wyborne.setPrice(20);
         wyborne.setSize(22);
 
         assertEquals(1, roletyRepository.add(wyborne));
         verify(addMock, times(1)).setInt(1, 1);
-        verify(addtMock, times(1)).setString(2, "Wyborne");
+        verify(addMock, times(1)).setString(2, "Wyborne");
         verify(addMock, times(1)).setInt(3, 20);
         verify(addMock, times(1)).setInt(4, 22);
         verify(addMock).executeUpdate();
@@ -156,19 +152,19 @@ public class RoletyRepositoryMockTest {
     public void getAllTest() throws SQLException {
         AbstractResultSet mockedResultSet = mock(AbstractResultSet.class);
         when(mockedResultSet.next()).thenCallRealMethod();
-        when(mockedResutSet.getInt("id")).thenCallRealMethod();
-        when(mockedResutSet.getString("Name")).thenCallRealMethod();
-        when(mockedResutSet.getInt("Price")).thenCallRealMethod();
-        when(mockedResutSet.getInt("Size")).thenCallRealMethod();
+        when(mockedResultSet.getInt("id")).thenCallRealMethod();
+        when(mockedResultSet.getString("Name")).thenCallRealMethod();
+        when(mockedResultSet.getInt("Price")).thenCallRealMethod();
+        when(mockedResultSet.getInt("Size")).thenCallRealMethod();
         when(getAllMock.executeQuery()).thenReturn(mockedResultSet);
 
-        assertEquals(1, roletyRepository.getAll().getName());
+        assertEquals(1, roletyRepository.getAll());
 
-        verify(getAlltMock, times(1)).executeQuery();
-        verify(mockedResutSet, times(1)).getInt("id");
-        verify(mockedResutSet, times(1)).getString("Name");
-        verify(mockedResutSet, times(1)).getInt("Price");
-        verify(mockedResutSet, times(1)).getInt("Size");
+        verify(getAllMock, times(1)).executeQuery();
+        verify(mockedResultSet, times(1)).getInt("id");
+        verify(mockedResultSet, times(1)).getString("Name");
+        verify(mockedResultSet, times(1)).getInt("Price");
+        verify(mockedResultSet, times(1)).getInt("Size");
         verify(mockedResultSet, times(2)).next();
     }
 }
