@@ -1,7 +1,6 @@
 package com.rolety.web;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
