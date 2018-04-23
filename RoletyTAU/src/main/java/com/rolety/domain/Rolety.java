@@ -1,4 +1,4 @@
-package com.rolety.roletycrud.domain;
+package com.rolety.domain;
 
 
 

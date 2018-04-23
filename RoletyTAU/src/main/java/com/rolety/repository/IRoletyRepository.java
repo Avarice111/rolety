@@ -1,4 +1,4 @@
-package com.rolety.roletycrud.repository;
+package com.rolety.repository;
 
 import com.rolety.roletycrud.domain.Rolety;
 
@@ -8,14 +8,11 @@ import java.util.List;
 
 public interface RoletyRepository {
 
-    public Connection getConnection();
-
 	public void setConnection(Connection connection) throws SQLException;
     public List<Rolety> getAll();
-    public void initDatabase();
     public Rolety getById(int id);
-    public void addRolety(Rolety rolety);
-    public void deleteRolety(Rolety rolety);
-    public void updateRolety(Rolety rolety);
+    public int addRolety(Rolety rolety);
+    public int deleteRolety(int id);
+    public int updateRolety(Rolety rolety, int id);
 
 }

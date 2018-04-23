@@ -1,4 +1,4 @@
-package com.rolety.roletycrud.repository;
+package com.rolety.repository;
 
 import com.rolety.roletycrud.domain.Rolety;
 
@@ -9,21 +9,28 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RoletyRepositoryImpl implements RoletyRepository {
 
     private Connection connection;
-    private PreparedStatement getAllRoletysStmt;
-    private PreparedStatement addRoletyStmt;
-    private PreparedStatement deleteRoletyStmt;
-    private PreparedStatement updateRoletyStmt;
-    private PreparedStatement getByIdRoletyStmt;
+    private PreparedStatement getAll;
+    private PreparedStatement add;
+    private PreparedStatement delete;
+    private PreparedStatement update;
+    private PreparedStatement getById;
 
     public RoletyRepositoryImpl(Connection connection) throws SQLException{
         this.connection = connection;
         if (!isDatabaseReady()) {
             createTables();
         }
-        setConnection(connection);
+        this.setConnection(connection);
+    }
+
+    public RoletyRepositoryFactory() throws SQLException {
+        
     }
     
     private boolean isDatabaseReady() {
@@ -50,11 +57,36 @@ public class RoletyRepositoryImpl implements RoletyRepository {
             "Size integer NOT NULL)");
 	}
 
+    @Override
+	public Connection getConnection() {
+		return connection;
+	}
+
+	@Override
+	public void setConnection(Connection connection) throws SQLException {
+        this.connection = connection;
+        add = connection.prepareStatement(
+            "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
+        );
+        getAll = connection.prepareStatement(
+            "SELECT Id, Name, Price, Size FROM Rolety"
+        );
+        delete = connection.prepareStatement(
+            "DELETE FROM Rolety WHERE Id = ?"
+        );
+        update = connection.prepareStatement(
+            "UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE Id = ?"
+        );
+        getById = connection.prepareStatement(
+            "SELECT FROM Rolety WHERE Id = ?"
+        );
+	}
+
 	@Override
 	public List<Rolety> getAll() {
-        List<Rolety> roletys = new LinkedList<>();
+        List<Rolety> roletys = new LinkedList<Rolety>();
         try {
-            ResultSet rs = getAllRoletysStmt.executeQuery();
+            ResultSet rs = getAll.executeQuery();
 
             while (rs.next()) {
                 Rolety r = new Rolety();
@@ -71,23 +103,17 @@ public class RoletyRepositoryImpl implements RoletyRepository {
     }
 
 	@Override
-	public void initDatabase() {
-		
-	}
-
-	@Override
-	public Rolety getById(int id) {
+	public Rolety getById(int id) throws SQLException{
         Rolety rolety = new Rolety();
         try {
             getByIdRoletyStmt.setInt(1, id);
-            ResultSet rs = getByIdRoletyStmt.executeQuery();
+            ResultSet rs = getById.executeQuery();
 
             while (rs.next()) {
-                Rolety r = new Rolety();
-                r.setId(rs.getInt("Id"));
-                r.setName(rs.getString("Name"));
-                r.setSize(rs.getInt("Size"));
-                r.setPrice(rs.getInt("Price"));
+                rolety.setId(rs.getInt("Id"));
+                rolety.setName(rs.getString("Name"));
+                rolety.setSize(rs.getInt("Size"));
+                rolety.setPrice(rs.getInt("Price"));
             } 
         } catch (SQLException e) {
                 throw new IllegalStateException(e.getMessage() + "\n" + e.getStackTrace().toString());
@@ -97,24 +123,25 @@ public class RoletyRepositoryImpl implements RoletyRepository {
 
 
 	@Override
-	public void addRolety(Rolety rolety) {
+	public int addRolety(Rolety rolety) {
         int count = 0;
         try {
-            addRoletyStmt.setString(1, rolety.getName());
-            addRoletyStmt.setInt(2, rolety.getPrice());
-            addRoletyStmt.setInt(3, rolety.getSize());
-            count = addRoletyStmt.executeUpdate();
+            add.setString(1, rolety.getName());
+            add.setInt(2, rolety.getPrice());
+            add.setInt(3, rolety.getSize());
+            count = add.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e.getMessage() + "\n" + e.getStackTrace().toString());
         }
+        return count;
 	}
 
 	@Override
-	public void deleteRolety(Rolety rolety) {
+	public int deleteRolety(int id) {
 
         try {
-            deleteRoletyStmt.setInt(1, rolety.getId());
-            deleteRoletyStmt.executeUpdate();
+            delete.setInt(1, id);
+            delete.executeUpdate();
             
         }catch(SQLException e) {
             throw new IllegalStateException(e.getMessage() + "\n" + e.getStackTrace().toString());
@@ -123,44 +150,18 @@ public class RoletyRepositoryImpl implements RoletyRepository {
 	}
 
 	@Override
-	public void updateRolety(Rolety rolety) {
+	public int updateRolety(Rolety rolety, int id) throws SQLException {
         int count = 0;
         try {
-            updateRoletyStmt.setString(1, rolety.getName());
-            updateRoletyStmt.setInt(2, rolety.getPrice());
-            updateRoletyStmt.setInt(3, rolety.getSize());
-            updateRoletyStmt.setInt(4, rolety.getId());
-            count = updateRoletyStmt.executeUpdate();
+            update.setString(1, rolety.getName());
+            update.setInt(2, rolety.getPrice());
+            update.setInt(3, rolety.getSize());
+            update.setInt(4, rolety.getId());
+            count = update.executeUpdate();
         } catch(SQLException e) {
             throw new IllegalStateException(e.getMessage() + "\n" + e.getStackTrace().toString());
         }
-    }
-    @Override
-	public Connection getConnection() {
-		return connection;
-	}
 
-	@Override
-	public void setConnection(Connection connection) throws SQLException {
-        this.connection = connection;
-        addRoletyStmt = connection.
-        prepareStatement(
-            "INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)"
-        );
-        getAllRoletysStmt = connection.
-        prepareStatement("SELECT Id, Name, Price, Size FROM Rolety"
-        );
-        deleteRoletyStmt = connection.
-        prepareStatement(
-            "DELETE FROM Rolety WHERE Id = ?"
-        );
-        updateRoletyStmt = connection.
-        prepareStatement(
-            "UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE Id = ?"
-        );
-        getByIdRoletyStmt = connection.
-        prepareStatement(
-            "SELECT FROM Rolety WHERE Id = ?"
-        );
-	}
+        return count;
+    }
 }

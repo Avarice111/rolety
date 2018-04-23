@@ -1,4 +1,4 @@
-package com.rolety.roletycrud.domain;
+package com.rolety.domain;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
