@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"com.rolety.roletycrud"})
+@ComponentScan({"com.rolety"})
 public class RestConfiguration extends WebMvcConfigurerAdapter
 {
     @Override

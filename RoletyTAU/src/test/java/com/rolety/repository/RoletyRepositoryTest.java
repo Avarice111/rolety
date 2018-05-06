@@ -18,8 +18,7 @@ public class RoletyRepositoryTest
 
     @Before
     public void initDatabase() throws SQLException {
-        String url = "jdbc:hsqldb:hsql://localhost/workdb";
-        roletyRepository = new RoletyRepositoryFactory(DriverManager.getConnection(url));
+        roletyRepository = RoletyRepositoryFactory.getInstance();
         Rolety wyborne = new Rolety();
         wyborne.setId(1);
         wyborne.setName("Wyborne");

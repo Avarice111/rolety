@@ -15,56 +15,53 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rolety.domain.Rolety;
 import com.rolety.repository.IRoletyRepository;
+import com.rolety.repository.RoletyRepositoryFactory;
 
 @RestController
 public class RoletyApi {
+
     @Autowired
     IRoletyRepository roletyRepository;
 
     @RequestMapping("/")
-    public String index()
-    {
-        return "This is not rest, just checking if everything works";
+    public String index() {
+        return "This is not rest, just checking if everything works.";
     }
 
-    @RequestMapping(value = "/rolety", method = RequestMethod.POST,
-    consumes = MediaType.APPLICATION_JSON_VALUE)
-    public int addRolety(@RequestBody Rolety r)
-    {
-            return new Integer(roletyRepository.add(r));
-    }
-
-    @RequestMapping(value = "/rolety", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/rolety", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<Rolety> getRoletys() throws SQLException
-    {
-        List<Rolety> rolety = new LinkedList<Rolety>();
-        for(Rolety r : roletyRepository.getAll())
-        {
-                rolety.add(r);
+    public List<Rolety> getAll() throws SQLException {
+        roletyRepository = RoletyRepositoryFactory.getInstance();
+        List<Rolety> roletys = new LinkedList<Rolety>();
+        for (Rolety rolety : roletyRepository.getAll()) {
+                roletys.add(rolety);
         }
-        return rolety;
+        return roletys;
     }
 
-    @RequestMapping(value= "/rolety/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Rolety getRolety(@PathVariable("id") int id) throws SQLException
-    {
+    @RequestMapping(value = "/rolety/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Rolety getById(@PathVariable("id") int id) throws SQLException {
+        roletyRepository = RoletyRepositoryFactory.getInstance();
         return roletyRepository.getById(id);
     }
 
+    @RequestMapping(value = "/rolety", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Long add(@RequestBody Rolety rolety) {
+        roletyRepository = RoletyRepositoryFactory.getInstance();
+        return new Long(roletyRepository.add(rolety));
+    }
+
     @RequestMapping(value = "/rolety/{id}", method = RequestMethod.DELETE)
-    @ResponseBody
-    public int deleteRolety(@PathVariable("id") int id) throws SQLException {
-        return new Integer(roletyRepository.delete(id));
+    public Long delete(@PathVariable("id") int id) throws SQLException {
+        roletyRepository = RoletyRepositoryFactory.getInstance();
+        return new Long(roletyRepository.delete(id));
     }
 
-    @RequestMapping(value = "/rolety/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public int updateRolety(@PathVariable("id") int id ,@RequestBody Rolety r ) throws SQLException
-    {
-        return new Integer(roletyRepository.update(r, id));   
+    @RequestMapping(value = "/rolety/{id}", method = RequestMethod.PUT)
+    public Long update(@PathVariable("id") int id, @RequestBody Rolety rolety) throws SQLException {
+        roletyRepository = RoletyRepositoryFactory.getInstance();
+        return new Long(roletyRepository.update(rolety,id));
     }
-
-
-
 
 }

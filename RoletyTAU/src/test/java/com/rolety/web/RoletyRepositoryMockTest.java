@@ -10,7 +10,8 @@ import java.sql.SQLException;
 
 import com.rolety.domain.Rolety;
 import com.rolety.repository.IRoletyRepository;
-import com.rolety.repository.RoletyRepositoryFactory;
+import com.rolety.repository.RoletyRepositoryImpl;
+
 import org.junit.runner.RunWith;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,7 +50,7 @@ public class RoletyRepositoryMockTest {
         when(connectionMock.prepareStatement("DELETE FROM Rolety WHERE Id = ?")).thenReturn(deleteMock);
         when(connectionMock.prepareStatement("UPDATE Rolety SET Name = ?, Price = ?, Size = ? WHERE Id = ?")).thenReturn(updateMock);
         when(connectionMock.prepareStatement("SELECT * FROM Rolety WHERE Id = ?")).thenReturn(getByIdMock);
-        roletyRepository = new RoletyRepositoryFactory();
+        roletyRepository = new RoletyRepositoryImpl();
         roletyRepository.setConnection(connectionMock);
 
         verify(connectionMock).prepareStatement("INSERT INTO Rolety (Name, Price, Size) VALUES (?, ?, ?)");
