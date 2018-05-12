@@ -32,11 +32,7 @@ public class RoletyApi {
     @ResponseBody
     public List<Rolety> getAll() throws SQLException {
         roletyRepository = RoletyRepositoryFactory.getInstance();
-        List<Rolety> roletys = new LinkedList<Rolety>();
-        for (Rolety rolety : roletyRepository.getAll()) {
-                roletys.add(rolety);
-        }
-        return roletys;
+        return roletyRepository.getAll();
     }
 
     @RequestMapping(value = "/rolety/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
