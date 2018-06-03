@@ -29,8 +29,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+
 
 public class AutomationPracticeTest {
 	private WebDriver driver;
@@ -40,7 +40,7 @@ public class AutomationPracticeTest {
 
 	@Before
 	public void setUp() throws Exception {
-	System.setProperty("webdriver.chrome.driver","src\\test\\java\\com\\selenium\\chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver","src\\test\\resources\\com\\selenium\\chromedriver.exe");
 	driver = new ChromeDriver();
 	baseUrl = "http://automationpractice.com";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
