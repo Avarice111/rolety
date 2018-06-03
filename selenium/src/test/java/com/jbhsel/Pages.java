@@ -15,7 +15,7 @@ public class Pages {
         this.driverProvider = driverProvider;
     }
 
-    public GithubRepositoryPage helpdesk() {
+    public GithubRepositoryPage githubRepositoryPage() {
         if (githubRepositoryPage == null) {
             githubRepositoryPage = new GithubRepositoryPage(driverProvider);
         }

@@ -36,7 +36,7 @@ public class SomeSiteTest {
 		caps.setCapability("takesScreenshot", true);
 		caps.setCapability(
 				PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-				"C:\\Users\\galyn\\Desktop\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe"
+				"src\\test\\resources\\com\\jbhsel\\phantomjs.exe"
 		);
 		driver = new PhantomJSDriver(caps);
 	}
