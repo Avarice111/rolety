@@ -23,7 +23,9 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import org.junit.Ignore;
 
+@Ignore
 public class SomeSiteTest {
 
 	private static WebDriver driver;

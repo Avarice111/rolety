@@ -3,6 +3,8 @@ package com.jbhsel;
 import com.jbhsel.pages.GithubRepositoryPage;
 
 import org.jbehave.web.selenium.WebDriverProvider;
+import org.junit.Ignore;
+
 
 public class Pages {
 

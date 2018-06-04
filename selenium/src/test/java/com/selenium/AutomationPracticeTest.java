@@ -31,7 +31,6 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
-
 public class AutomationPracticeTest {
 	private WebDriver driver;
 	private String baseUrl;
@@ -65,17 +64,109 @@ public class AutomationPracticeTest {
         int n = number();
         String email = "Testowy" + n;
 
-        registration(email, "1", "Test", "Last", "21377", "Rolety tu i tam 22", "Ames", "17", "77722", "2", "500100900");
+        failedRegistrationEmail(email, "1", "Test", "Last", "21377", "Rolety tu i tam 22", "Ames", "17", "77722", "2", "500100900");
+
+    }
+
+    private void failedRegistrationEmail (String email, String gender, String firstname, String lastname, String password,
+        String address, String city, String state, String zip, String country, String mobile_phone) throws Exception {
+        driver.get(baseUrl + "/index.php");
+        driver.findElement(By.cssSelector(".login")).click();
+        driver.findElement(By.id("email_create")).clear();
+        driver.findElement(By.id("email_create")).sendKeys(email);
+        
+        driver.findElement(By.id("SubmitCreate")).click();
+
+        Thread.sleep(2000);
+        assertEquals(true, driver.findElement(By.cssSelector("#create_account_error")).isDisplayed());
 
     }
 
     @Test
-    public void failedRegistrationTest_firstname() throws Exception {
+    public void failedRegistrationTest() throws Exception {
         //firstname
         int n = number();
         String email = "Testowy" + n + "@gmail.com";
 
-        registration(email, "1", "Test1", "Last", "21377", "Rolety tu i tam 22", "Ames", "17", "77722", "2", "500100900");
+        failedRegistration(email, "1", "Test1", "Last", "21377", "Rolety tu i tam 22", "Ames", "17", "77722", "2", "500100900");
+
+    }
+
+    private void failedRegistration (String email, String gender, String firstname, String lastname, String password,
+        String address, String city, String state, String zip, String country, String mobile_phone) throws Exception {
+        driver.get(baseUrl + "/index.php");
+        driver.findElement(By.cssSelector(".login")).click();
+        driver.findElement(By.id("email_create")).clear();
+        driver.findElement(By.id("email_create")).sendKeys(email);
+        
+        driver.findElement(By.id("SubmitCreate")).click();
+
+        Thread.sleep(1000);
+        assertEquals(false, driver.findElement(By.cssSelector("#create_account_error")).isDisplayed());
+
+        //Title 
+        driver.findElement(By.id("uniform-id_gender" + gender)).click();
+        assertEquals(true, driver.findElement(By.cssSelector("#id_gender1")).isSelected());
+
+        //Firstname
+        driver.findElement(By.id("customer_firstname")).clear();
+        driver.findElement(By.id("customer_firstname")).sendKeys(firstname);
+        assertNotNull(driver.findElement(By.id("customer_firstname")).getAttribute("value"));
+
+        //Lastname
+        driver.findElement(By.id("customer_lastname")).clear();
+        driver.findElement(By.id("customer_lastname")).sendKeys(lastname);
+        assertNotNull(driver.findElement(By.id("customer_lastname")).getAttribute("value"));
+
+        //e-mail
+        assertNotNull(driver.findElement(By.id("email")).getAttribute("value"));
+
+        //Password
+        driver.findElement(By.id("passwd")).clear();
+        driver.findElement(By.id("passwd")).sendKeys(password);
+        assertNotNull(driver.findElement(By.id("passwd")).getAttribute("value"));
+        assertTrue(driver.findElement(By.id("passwd")).getAttribute("value").length()>=5 );
+
+        //Address
+        driver.findElement(By.id("address1")).clear();
+        driver.findElement(By.id("address1")).sendKeys(address);
+        assertNotNull(driver.findElement(By.id("address1")).getAttribute("value"));
+
+        //City
+        driver.findElement(By.id("city")).clear();
+        driver.findElement(By.id("city")).sendKeys(city);
+        assertNotNull(driver.findElement(By.id("city")).getAttribute("value"));
+
+        //State
+        driver.findElement(By.cssSelector("#id_state > option:nth-child(" + state + ")")).click();
+        assertEquals("15", driver.findElement(By.id("id_state")).getAttribute("value"));
+
+        //Zip
+        driver.findElement(By.id("postcode")).clear();
+        driver.findElement(By.id("postcode")).sendKeys(zip);
+        assertNotNull(driver.findElement(By.id("postcode")).getAttribute("value"));
+        assertTrue(driver.findElement(By.id("postcode")).getAttribute("value").length()==5);
+
+        //Country
+        driver.findElement(By.cssSelector("#id_country > option:nth-child(" + country + ")")).click();
+        assertEquals("21", driver.findElement(By.id("id_country")).getAttribute("value"));
+
+        //Mobile phone
+        driver.findElement(By.id("phone_mobile")).clear();
+        driver.findElement(By.id("phone_mobile")).sendKeys(mobile_phone);
+        assertNotNull(driver.findElement(By.id("phone_mobile")).getAttribute("value"));
+
+        driver.findElement(By.id("submitAccount")).click();
+
+        Thread.sleep(1000);
+        if(driver.findElements(By.linkText("Sign out") ).size() != 0) {
+            driver.findElement(By.linkText("Sign out")).click();
+        }
+        else
+        assertTrue(true);
+
+           File scrFile3 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+           FileUtils.copyFile(scrFile3, new File("target/AutomationPracticeTest3.png"));
 
     }
 

@@ -21,6 +21,9 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 
+import org.junit.Ignore;
+
+@Ignore
 public class SiteStories extends JUnitStories {
 
     private WebDriverProvider driverProvider =
