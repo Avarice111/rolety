@@ -6,6 +6,7 @@ describe("validator", function () {
         var evt = document.createEvent("HTMLEvents"); 
         evt.initEvent("input", false, true);
         element.dispatchEvent(evt);
+        element.value = "";
     }
 
     beforeAll(function () {
@@ -21,7 +22,7 @@ describe("validator", function () {
     });
     
     it("invalid text", function () {
-      $('#name').validate(/^[A-Z][a-z]+$/);
+      $('#name').validate(/^[A-Za-z]+$/);
       expect($('#name').css("background-color")).toEqual("rgb(255, 0, 0)");
     });
 
@@ -38,11 +39,11 @@ describe("validator", function () {
 
     it("input validation", function() {
         var css = spyOn($.fn, 'css');
-        $('#text').field_validation(/^\d+$/);
+        $('#text').field_validation(/^[A-Za-z]+$/);
 
-        key_press('1');
+        key_press('aA');
         expect(css).toHaveBeenCalledWith("border", "2px solid green");
-        key_press('a');
+        key_press('1');
         expect(css).toHaveBeenCalledWith("border", "2px solid red");
     });
 });
