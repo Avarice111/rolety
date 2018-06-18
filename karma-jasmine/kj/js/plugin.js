@@ -22,6 +22,10 @@
             else {
               elem.css("border", "2px solid red")
             }
+            if(elem.val() == 0) {
+              elem.css("border", "")
+            }
+
       });
       return this;
     }
